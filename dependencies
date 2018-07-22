@@ -1,0 +1,2 @@
+HSDArc.o: HSDArc.cpp HSDArc.h
+main.o: main.cpp HSDArc.h
