@@ -27,9 +27,10 @@ int main(int argc, char *argv[])
         file.read (memblock, size);
         file.close();
         hsdarc_buffer buf=get_elements(memblock);
-		for(int i=1; i<buf.ptr_list_length;)
+        for(int i=1; i<buf.ptr_list_length; i++)
         {
-            cout<<GetStringXorred(read_data_long(buf.data, buf.ptr_list[i++], 8) + 0x20, buf.data, Xor_Str, Xor_Str_Size)<<endl;
+            if(read_data_long(buf.data, buf.ptr_list[i], 8) + 0x20 < buf.archive_size)
+                cout<<GetStringXorred(read_data_long(buf.data, buf.ptr_list[i], 8) + 0x20, buf.data, Xor_Str, Xor_Str_Size)<<endl;
         }
 		delete(memblock);
     }
